@@ -1,0 +1,110 @@
+<head>
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div>
+  <div style="margin-bottom: -60px;margin-left: 150px; padding-left: 10px;">
+    <button type="button" (click)="BackButton()" style="width: 70px; height: 30px; margin-left: 800px; margin-bottom: 30px; cursor: pointer;">Logout</button>
+  </div>
+  <div style="margin-bottom: -70px;margin-left: 150px;">
+    <button type="button" (click)="addFile()" style="width: 100px; height: 30px; margin-left: 700px; margin-bottom: 30px; cursor: pointer;">Uplaod File</button>
+  </div>
+  <div>
+    <section>
+      <!--for demo wrap-->
+      <h2> <b>Welcome {{currentUserName}}</b></h2>
+      <h4>File Manager Data</h4>
+
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>File Name</th>
+              <th>File Status</th>
+              <th>Creation Date</th>
+              <th>Updation Date</th>
+              <th>File Size</th>
+              <th>Request Admin</th>
+              <th>Download File</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr  *ngFor="let file of fileDatas; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{file.filename}} </td>
+              <td>{{file.fileStatus}}</td>
+              <td>{{file.filecreationDate}}</td>
+              <td>{{file.fileUpdationDate}}</td>
+              <td>{{file.fileSize}}</td>
+              <td *ngIf = "file.fileStatus == 'block'"><span (click)="updateFile(file.fileId, file.fileStatus)" style="cursor: pointer;">Request Unblocking</span></td>
+              <td *ngIf = "file.fileStatus == 'unblock'"><span (click)="updateFile(file.fileId, file.fileStatus)" style="cursor: pointer;">Request Block</span></td>
+              <td *ngIf = "file.fileStatus == 'unblock'"><span (click)="downloadFile(file.fileId)" class="fa" style="cursor: pointer;">&#xf019;</span></td>
+              <td *ngIf = "file.fileStatus == 'block'"><span class="fa" style="cursor: not-allowed;">&#xf019;</span></td>
+              <td><span (click)="deleteFile(file.fileId)" class="fa fa-close" style="cursor: pointer;"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- <head>
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div id="background">
+  <div>
+    <button type="button" (click)="BackButton()" style="width: 70px; height: 30px; margin-left: 800px; margin-bottom: 30px;">Logout</button>
+  </div>
+  <div id="main">
+    <div id="heading">
+      <h3>Welcome {{currentUserName}}!</h3>
+    </div>
+    <div id="content">
+      <br><br><br>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>File Name</th>
+              <th>File Status</th>
+              <th>Creation Date</th>
+              <th>Updation Date</th>
+              <th>File Size</th>
+              <th>Request Blocking/Unblocking</th>
+              <th>Download File</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let file of fileDatas; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{file.name}} </td>
+              <td>{{file.status}}</td>
+              <td>{{file.creationDate}}</td>
+              <td>{{file.updationDate}}</td>
+              <td>{{file.size}}</td>
+              <td><span (click)="updateFile(file.id)" style="color: blue; cursor: pointer;">Edit Blocked/Unblocked Request</span></td>
+              <td><span (click)="downloadFile(file.id)" class="fa">&#xf019;</span></td>
+              <td><span (click)="deleteFile(file.id)" class="fa fa-close"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="center">
+          <button [disabled]="" class="btn btn-primary" style="width: 200px;" (click)="addFile()">Add File</button>
+      </div>
+    </div>
+  </div>
+</div> -->

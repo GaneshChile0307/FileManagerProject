@@ -1,0 +1,93 @@
+<head>
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div>
+  <div style="margin-bottom: -70px;margin-left: 150px;">
+    <button type="button" (click)="BackButton()" style="width: 70px; height: 30px; margin-left: 800px; margin-bottom: 30px;">Logout</button>
+  </div>
+  <div>
+    <section>
+      <!--for demo wrap-->
+      <h1> <b>File Manager Data</b></h1>
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>File Name</th>
+              <th>File Status</th>
+              <th>Creation Date</th>
+              <th>Updation Date</th>
+              <th>File Size</th>
+              <th>Download File</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr  *ngFor="let file of fileDatas; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{file.filename}} </td>
+              <td>{{file.fileStatus}}</td>
+              <td>{{file.filecreationDate}}</td>
+              <td>{{file.fileUpdationDate}}</td>
+              <td>{{file.fileSize}}</td>
+              <td *ngIf = "file.fileStatus == 'unblock'"><span (click)="downloadFile(file.fileId)" style="cursor: pointer;" class="fa">&#xf019;</span></td>
+              <td *ngIf = "file.fileStatus == 'block'"><span style="cursor: not-allowed;" class="fa">&#xf019;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!-- <head>
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div id="background">
+  <div>
+    <button type="button" (click)="BackButton()" style="width: 70px; height: 30px; margin-left: 800px; margin-bottom: 30px;">Logout</button>
+  </div>
+  <div id="main">
+    <div id="heading">
+      <h3>Welcome Guest User!</h3>
+    </div>
+    <div id="content">
+      <br><br><br>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>File Name</th>
+              <th>File Status</th>
+              <th>Creation Date</th>
+              <th>Updation Date</th>
+              <th>File Size</th>
+              <th>Download File</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let file of fileDatas; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{file.name}} </td>
+              <td>{{file.status}}</td>
+              <td>{{file.creationDate}}</td>
+              <td>{{file.updationDate}}</td>
+              <td>{{file.size}}</td>
+              <td><span (click)="downloadFile(file.id)" class="fa">&#xf019;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div> -->

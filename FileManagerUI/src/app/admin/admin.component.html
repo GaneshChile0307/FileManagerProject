@@ -1,0 +1,102 @@
+<head>
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div>
+  <div style="margin-bottom: -70px;margin-left: 150px;">
+    <button type="button" (click)="BackButton()" style="width: 70px; height: 30px; margin-left: 800px; margin-bottom: 30px; cursor: pointer;">Logout</button>
+  </div>
+  <div>
+    <section>
+      <!--for demo wrap-->
+      <h2> <b>Welcome {{currentUserName}}</b></h2>
+      <h4>File Manager Data</h4>
+
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>User Name</th>
+              <th>User Email Id</th>
+              <th>File Name</th>
+              <th>File Size</th>
+              <th>File Request</th>
+              <th>File Request Message</th>
+              <th>Accept Request</th>
+              <th>Decline Request</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr  *ngFor="let file of fileDatas; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{file.userDetails.userName}} </td>
+              <td>{{file.userDetails.userEmail}}</td>
+              <td>{{file.FileDetails.filename}}</td>
+              <td>{{file.FileDetails.fileSize}}</td>
+              <!-- <td> {{file.FileDetails.fileStatus  }}</td> -->
+              <td *ngIf = "file.requestStatus == 'block'"> Block File</td>
+              <td *ngIf = "file.requestStatus == 'unblock'"> Unblock File</td>
+              <td>{{file.requestMessage}}</td>
+              <td><span (click)="acceptRequest(file.reqID)" class="fa fa-check" style="cursor: pointer;"></span></td>
+              <td><span (click)="declineRequest(file.reqID)" class="fa fa-close" style="cursor: pointer;"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!-- <head>
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div id="background">
+  <div>
+    <button type="button" (click)="BackButton()" style="width: 70px; height: 30px; margin-left: 800px; margin-bottom: 30px;">Logout</button>
+  </div>
+  <div id="main">
+    <div id="heading">
+      <h3>Welcome {{currentUserName}}!</h3>
+    </div>
+    <div id="content">
+      <br><br><br>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>User Name</th>
+              <th>User Email Id</th>
+              <th>File Name</th>
+              <th>File Size</th>
+              <th>File Request Message</th>
+              <th>Accept Request</th>
+              <th>Decline Request</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let file of fileDatas; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{file.userName}} </td>
+              <td>{{file.userEmail}}</td>
+              <td>{{file.name}}</td>
+              <td>{{file.size}}</td>
+              <td>{{file.requestMessage}}</td>
+              <td><span (click)="acceptRequest(file.id)" class="fa fa-check" style="color: blue; cursor: pointer;"></span></td>
+              <td><span (click)="declineRequest(file.id)" class="fa fa-close" style="color: blue; cursor: pointer;"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div> -->
